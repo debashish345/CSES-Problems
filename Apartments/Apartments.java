@@ -26,29 +26,20 @@ public class Apartments {
             b[i++] = Integer.parseInt(x);
         }
 
-        System.out.println("result-->" + numberOfApplicants(k,a,b));
+        System.out.println(+ numberOfApplicants(k,a,b));
     }
 
     private static int numberOfApplicants(int k, int[] a, int[] b) {
 
         int reg_applicant = 0;
-
-        for(int i=0; i<a.length; i++){
-            boolean flag = false;
-            for(int j=0; j<b.length && b[j]>0; j++){
-                System.out.println((a[i]+k) + ">=" + b[j] + "<=" + (a[i]-k));
-                if(b[j]<=a[i]+k || b[j]>=a[i]-k){
-                    flag = true;
-                    System.out.println("ok");
-                    b[j] = -1;
-                    break;
+        for(int i=0; i<b.length; i++){
+            for(int j=0; j<a.length; j++){
+                if((b[i]<a[j]+k) && (b[i]>=a[j]-5)){
+                    reg_applicant++;
+                    b[i] = -1;
                 }
             }
-            System.out.println("-----------");
-            if(flag)
-                reg_applicant++;
         }
-
         return reg_applicant;
     }
 }
