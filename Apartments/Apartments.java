@@ -33,10 +33,11 @@ public class Apartments {
 
         int reg_applicant = 0;
         for(int i=0; i<b.length; i++){
-            for(int j=0; j<a.length; j++){
+            for(int j=0; j<a.length && b[i]>0; j++){
                 if((b[i]<a[j]+k) && (b[i]>=a[j]-5)){
                     reg_applicant++;
                     b[i] = -1;
+                    break;
                 }
             }
         }
